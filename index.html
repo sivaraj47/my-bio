@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Bio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+	.profileb{
+	 display:flex;
+	 justify-content:center;
+	 align-items:center;
+	 background:#f2f2f2;
+	flex-direction:column;
+	border-radius:45px;
+	margin-top:2% !important;
+	width:70%;
+	margin:auto;
+	padding: 40px 20px;
+	    color: #164256 !important;
+		font-family:"Poppins";
+		    box-shadow: 0px 4px 32px #1c5754;
+			animation:myan 5s infinite alternate ease-in-out;
+			border:10px solid #1c5754;
+	}
+	.profileb img {
+    border-radius: 50%;
+}
+.p-0{
+padding:0px;
+margin:0px;
+}
+h4{
+padding:2px !important;;
+margin:2px !important;
+}
+.btn-git {
+    border: honeydew;
+    background: #edc168;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+a{
+text-decoration:none;
+color:#000 !important;
+}
+@keyframes myan{
+
+0%{
+box-shadow: 0 0 5px #1c5754, 0 0 10px #1c5754;
+ border-color:#1c5754;
+}
+50%{
+box-shadow: 0 0 5px #edc168, 0 0 10px #edc168;
+border-color:#edc168;
+}
+100%{
+box-shadow: 0 0 5px #1c5754, 0 0 10px #1c5754;
+border-color:#1c5754;
+}
+}
+	
+	</style>
+	</head>
+<body >
+<div ng-controller="bioControl">
+<div class="profileb">
+ <h4><img src="https://avatars.githubusercontent.com/u/9676262?v=4"></h4>
+ <h4 class="p-0">Find in GitHub:{{profile.login}}</h4>
+<h4> Designation/Name:{{profile.name}}</h4>
+<h4>About My Skills:</h4>
+<p>{{profile.bio}}</p>
+<a class="btn-git" href="https://api.github.com/users/sivaraj47">GitHub</a>
+</div
+>
+</body>
+</html>
+
+<script>
+var app = angular.module('Bio',[]);
+
+app.controller('bioControl', function($scope,$http){
+
+	$http.get('https://api.github.com/users/sivaraj47')
+		.then(function(response){
+		 $scope.profile=response.data;
+
+		});
+
+
+});
+
+
+
+</script>
