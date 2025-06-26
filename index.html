@@ -91,7 +91,9 @@ app.controller('bioControl', function($scope,$http){
 
 
 });
-
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();   
+  }, false);
 
 
 </script>
